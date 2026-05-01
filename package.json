@@ -1,7 +1,7 @@
 {
   "name": "twitch-ai-viewers",
   "version": "1.3.0",
-  "description": "Twitch AI Viewers with emotion analysis and global knowledge learning",
+  "description": "Twitch AI-боты с анализом эмоций, чата и обучением базы знаний",
   "main": "src/main.ts",
   "type": "commonjs",
   "scripts": {
@@ -40,7 +40,7 @@
     "gpt",
     "yandex"
   ],
-  "author": "",
+  "author": "Crazy4elovek66",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
