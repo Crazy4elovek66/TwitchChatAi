@@ -1,0 +1,68 @@
+{
+  "name": "twitch-ai-viewers",
+  "version": "1.3.0",
+  "description": "Twitch AI Viewers with emotion analysis and global knowledge learning",
+  "main": "src/main.ts",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "dev:learning": "cross-env MODE=local LEARNING_MODE=1 tsx src/main.ts",
+    "dev:normal": "MODE=yandex LEARNING_MODE=0 ts-node-dev --respawn --transpile-only src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "start:learning": "LEARNING_MODE=1 node dist/main.js",
+    "start:normal": "LEARNING_MODE=0 node dist/main.js",
+    "test": "echo \"No tests specified\"",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "clean:data": "rm -rf data/memory/*.json data/learning/*",
+    "backup:knowledge": "cp -r data/memory/global_knowledge.json data/memory/global_knowledge_backup_$(date +%Y%m%d_%H%M%S).json",
+    "export:knowledge": "node -e \"const fs = require('fs'); const data = fs.readFileSync('data/memory/global_knowledge.json', 'utf8'); console.log(data)\"",
+    "stats": "node -e \"const fs = require('fs'); try { const data = JSON.parse(fs.readFileSync('data/memory/global_knowledge.json', 'utf8')); console.log('Total knowledge:', data.length); const cats = {}; data.forEach(k => cats[k.category] = (cats[k.category] || 0) + 1); console.log('Categories:', cats); } catch(e) { console.log('No knowledge data yet'); }\"",
+    "emotions:stats": "ts-node src/emotionStats.ts",
+    "emotions:export": "ts-node src/emotionStats.ts export",
+    "emotions:today": "ts-node src/emotionStats.ts today",
+    "knowledge:view": "ts-node src/knowledgeViewer.ts",
+    "knowledge:export": "ts-node src/knowledgeViewer.ts export json",
+    "knowledge:stats": "ts-node src/knowledgeViewer.ts categories",
+    "learn:local": "MODE=local LEARNING_MODE=1 ts-node-dev src/main.ts",
+    "models:download": "ts-node src/downloadModels.ts"
+  },
+  "keywords": [
+    "twitch",
+    "bot",
+    "ai",
+    "chat",
+    "learning",
+    "knowledge",
+    "emotion",
+    "analysis",
+    "gpt",
+    "yandex"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@xenova/transformers": "^2.17.2",
+    "axios": "^1.13.4",
+    "colors": "^1.4.0",
+    "dotenv": "^16.6.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "tmi.js": "^1.8.5"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.27",
+    "@types/node": "^20.11.19",
+    "@types/tmi.js": "^1.8.6",
+    "cross-env": "^10.1.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}

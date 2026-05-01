@@ -1,0 +1,12 @@
+Команды:
+npm run feed-rag - добавить данные из global-knowledge.json
+npm run check:accounts - проверить акки на доступ к чату
+
+
+**
+1. Создать сервисный акк с правами: ai.languageModels.user и ai.speechkit-stt.user
+2. Перейти в сам сер.акк и создать ему API ключ доступа -> области: 
+yc.ai.languageModels.execute
+yc.ai.speechkitStt.execute
+yc.ai.vision.execute
+yc.ai.speechkitTts.execute * 

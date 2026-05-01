@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": false, // ВЫКЛЮЧИТЬ - разрешает неиспользуемые переменные
+    "noUnusedParameters": false, // ВЫКЛЮЧИТЬ - разрешает неиспользуемые параметры
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "allowUnusedLabels": false
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
